@@ -1,0 +1,40 @@
+<div class = "container">
+  <div class="jumbotron">
+    <h1 class="display-4">Products!</h1>
+    <hr>
+    <% @products.each do |product| %>
+    
+
+        <br>
+        <div class = "left-right">
+
+          <td><%= product.name %></td>
+          <br>
+          Price
+          <td><%= product.price %></td>
+          <br>
+            <% if product.images.present? %>
+                <div class="row">
+                    <% product.images.each do |file| %>
+                      <%= image_tag url_for(file), style:'display: inline-block; width:200px; margin: 
+                      10px' %>
+            
+            <%end%>
+          
+      <%end%>
+    </div>
+    <%= link_to "Edit Details", edit_category_product_path(@category,product), :class => "btn 
+    btn-dark btn-sm"%>
+
+    <%= link_to "Delete", category_product_path(@category,product), method: 'delete',:class => "btn btn-danger btn-sm" %>
+    <br>
+    <%end%>
+    <br><br>
+    <div class="container">
+      <%= link_to "Add Products", new_category_product_path(@category), :class => "btn btn-info btn-sm"
+      %>
+      <%= link_to "Back", categories_path, :class => "btn btn-link btn-sm"%>
+    </div>
+  </div>
+</div>
+</div>

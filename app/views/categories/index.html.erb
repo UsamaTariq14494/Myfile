@@ -1,0 +1,41 @@
+
+<script type="text/javascript">
+  console.log('jquery is working', $('.display-4').hide())
+</script>
+<div class = "container">
+<div class="jumbotron">
+  <h1 class="display-4">Categories!</h1>
+<hr>
+
+        <% @categories.each do |category| %>
+      <tr>
+          <div class = "container">
+      <br>
+        <div class = "right-align">
+
+        <td><%= category.name %></td>
+
+<br>
+
+<% if category.image.present? %>
+<div style="width:200px; height:auto">
+  <%= image_tag url_for(category.image), style: 'width:100%' %>
+<% end %>
+
+<br>
+  <%= link_to "Show Items", category_products_path(category),:class => "btn btn-info btn-sm"%>
+  <%= link_to "Delete", category_path(category), method: 'Delete', :class =>"btn btn-danger btn-sm" %>
+
+  
+
+    <%#= link_to "Update", edit_category_path(:id)%>    
+    
+    </tr>
+</div>
+</div>
+    <%end%>
+    <br><br>
+    <div class="container">
+    <%= link_to "Add Category", new_category_path, :class => "btn btn-success btn-sm"%>
+</div>
+

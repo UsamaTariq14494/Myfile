@@ -1,0 +1,23 @@
+  <div class = "container">
+<div class="jumbotron">
+
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+<%= form_for(@category) do |form| %>
+  			
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name , :required => true, :autofocus=> true, :placeholder => "Category name"%>
+  </div>
+<br>
+
+				<div class="field">
+				<%= form.label :image %>
+  				<%= form.file_field :image %>
+  			</div>
+
+		
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+

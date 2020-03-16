@@ -1,0 +1,6 @@
+development:
+  adapter: postgresql
+  database: myapp
+  host: localhost
+  username: usama
+  password: 12345678
