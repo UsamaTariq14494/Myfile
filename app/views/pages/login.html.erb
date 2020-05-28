@@ -1,24 +1,33 @@
-	<html lang="en">
-    <boby>
-        <header>
-          
-          <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/architecture.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
-            <div class="mask rgba-gradient align-items-center">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-6 white-text text-center text-md-left mt-xl-5 mb-5 wow fadeInLeft" data-wow-delay="0.3s">
-                    <h1 class="h1-responsive font-weight-bold mt-sm-5">Make purchases with our APP </h1>
-
-                    <%= link_to "Categories", categories_path, :class => "btn btn-success btn-lg" %>
-                    <hr class="hr-light">
-                  </div>
-                  <div class="col-md-6 col-xl-5 mt-xl-5 wow fadeInRight" data-wow-delay="0.3s">
-                    <img src="https://mdbootstrap.com/img/Mockups/Transparent/Small/admin-new.png" alt="" class="img-fluid">
-                  </div>
-                </div>
-              </div>
-            </div>
+  <div class="mask rgba-gradient align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 white-text text-center text-md-left mt-xl-5 mb-5 wow fadeInLeft" data-wow-delay="0.3s">
+          <div class="col-md-6 col-xl-5 mt-xl-5 wow fadeInRight" data-wow-delay="0.3s">
+            <img src="https://i2.wp.com/freepngimages.com/wp-content/uploads/2014/04/ecommerce_2.png?w=220" class="img-fluid">
           </div>
-        </heade>
-    </body>
-</html>
+          <%if has_role?(:admin)%>
+          <h3>
+            <div class="bg-dark text-info"> ADMIN DASHBOARD
+            </div>
+          </h3>
+          <hr>
+          <%= button_to "Categories", categories_path, method: :get, :class => 'btn btn-dark' %>
+          <br>
+          <%= button_to "Orders", orders_path, method: :get, :class => 'btn btn-dark'  %>
+
+          <%else%>
+          <div class="text-light">
+            <h1 class="h1-responsive font-weight-bold mt-sm-5">
+            Make purchases with our APP </h1>
+          </div>
+          <%= link_to "Categories", categories_path, :class => "btn btn-info btn-lg" %>
+          <hr class="hr-light">
+          <%= button_to "Orders", orders_path, method: :get, :class => 'btn btn-light'  %>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

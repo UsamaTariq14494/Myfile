@@ -1,0 +1,59 @@
+<% if @current_cart.present? %>
+<div class="jumbotron">
+	<div class = "container">
+		<h1 class="display-4">Products in Cart!</h1>
+		<table class='table table-hover'>
+			<thead>
+				<tr>
+					<th>
+						Product Name
+					</th>
+					<th>
+						Product Price
+					</th>
+					<th>
+						Product Quantity
+					</th>
+					<th>
+						Update Quantity
+					</th>
+				</tr>
+			</thead>
+			
+			<% @current_cart.cart_items.each do |item|%>
+			<% @total = (@total || 0)%>
+			<tbody>
+				<tr>
+					<td>
+						<%= item.product.name %>
+					</td>
+					<td>
+						<%= item.product.price %>
+					</td>
+					<td>
+						<%= item.quantity %>
+						<% @total += item.product.price*item.quantity %>
+					</td>
+					<td>
+						<%= button_to "Edit Quantity",edit_cart_item_path(item), method: :get %>
+						<%= button_to "Delete", cart_item_path(item), method: 'delete',:class => "btn btn-danger btn-sm"%>
+					</td>
+				</tr>
+				<%end%>
+				<td>
+					<h4>TOTAL BILL</h4>
+					<h5><%= @total %></h5>
+					<%= button_to "Order Now",new_order_path, method: :get, :class => "btn btn-outline-info btn-md" %>
+
+				</td>
+
+			</tbody>
+		</table>
+
+		<br>
+		
+
+	</div>
+
+</div>
+<%end%>

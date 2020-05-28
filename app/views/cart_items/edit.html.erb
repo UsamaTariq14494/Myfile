@@ -1,0 +1,15 @@
+<div class = 'container'>
+	<section id="cover" class="min-vh-50">
+		<div id="cover-caption">
+			<div class="container">
+				<div class="row text">
+					<div class="mx-auto text-center form p-4">
+						<h3 class="display-5 py-4 text-truncate"></h3>
+						<h3>Update Quantity </h3>
+						<%= render partial: 'cart_items/form', :locals => {:product => @cart_item.product} %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

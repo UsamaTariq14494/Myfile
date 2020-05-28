@@ -1,20 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Myapp</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+  <title>
+    MYAPP
+ </title>
+ <%= csrf_meta_tags %>
+ <%= csp_meta_tag %>
+ <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+ <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
 
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">  
-  </script> -->
-  <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+     <div class="text-white">
+         <%=button_to "ECOMMERCE", root_path, method: :get, :class=> "bg-dark btn btn-outline-info btn-lg"%>
+     </div>
+     <%= image_tag "cartlogo.png", size: "45" %>
+
+
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+     </button>
+     <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+
+         <li class="nav-item">
+            <%=button_to"HomePage", root_path, method: :get, :class => "btn btn-outline-info btn-sm"%>
+         </li>|
+
+
+         <% if user_signed_in? %>
+         <li class="nav-item">
+            <%= button_to "Cart", shopping_cart_path, method: :get, :class => 'btn btn-outline-info btn-sm'  %>
+       </li>
+       |
+       <li class="nav-item">
+         <%= button_to "Logout", destroy_user_session_path, method: :delete, :class => 'btn btn-outline-light btn-sm'  %>
+      </li>
+      <% end %>
+   </ul>
+</div>
+</div>
+</nav>
 </head>
-
 <body>
-  <%= yield %>
+
+  <p class="navbar-text float-right text-white">
+    <% if user_signed_in? %>
+    Logged in as <strong><%= current_user.name %></strong>.
+    <br>
+    <%= link_to 'Edit User Profile', edit_user_registration_path, :class => 'navbar-link text-white' %>|
+    <% if @current_user.has_role? :admin %>
+    <strong>ADMIN</strong>
+    <br>
+    <% end %>
+    <% else %>
+    <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+    <% end %>
+ </p>
+   <div class="view" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSbI6gaGq9IRUqAh1kfGb6eJQDTjiJ-ngIxnNuImm-KbkgJJv4h&usqp=CAU'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+
+ <%= yield %>
 </body>
 </html>

@@ -12,20 +12,18 @@ class ProductsController < ApplicationController
 
 
 	def show
-
 	end
 
 
 	def create
 		@product = @category.products.create(product_params)
 		respond_to do|format|
-		if @product  
-
-        format.html {redirect_to  category_products_path(@category), notice: 'Product was successfully created.' }
-      else
-        format.html { render :new }
-      end
-    end
+			if @product  
+				format.html {redirect_to  category_products_path(@category), notice: 'Product was successfully created.' }
+			else
+				format.html { render :new }
+			end
+		end
 	end
 
 
@@ -41,12 +39,12 @@ class ProductsController < ApplicationController
 	def update
 		@product.update(product_params)
 		respond_to do|format|
-				if @product.save  
-						format.html {redirect_to  category_products_path(@category), notice: 'Product was successfully created.' }		
-      				else
-        				format.html { render :new }
-      			end
-      				
+			if @product.save  
+				format.html {redirect_to  category_products_path(@category), notice: 'Product was successfully created.' }		
+			else
+				format.html { render :new }
+			end
+
 		end
 	end
 
@@ -54,9 +52,9 @@ class ProductsController < ApplicationController
 	def destroy
 		@product.destroy
 		respond_to do |format|
-    		if @product
-      			format.html { redirect_to category_products_path(@category), notice: 'Category was successfully destroyed.' }
-				end
+			if @product
+				format.html { redirect_to category_products_path(@category), notice: 'Product was successfully destroyed.' }
+			end
 		end
 	end
 
