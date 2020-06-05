@@ -3,6 +3,9 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+ // if use rails ujs than no need to require jquery
+
+console.log("hello from application.js")
 require("jquery")
 require("@rails/ujs").start()
 require("turbolinks").start()
@@ -11,11 +14,6 @@ require("channels")
 
 import "bootstrap";
 import "../stylesheets/application"
-
-document.addEventListener("turbolinks:load", () => {
-  $('[data-toggle="tooltip"]').tooltip()
-  $('[data-toggle="popover"]').popover()
-})
 
 // import toastr from 'toastr'
 // window.toastr = toastr

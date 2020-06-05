@@ -1,0 +1,17 @@
+Order number:
+            <%= order.id%>
+        <br>
+
+        User Id:
+        <%=order.user_id%>
+        <br>
+        Order Date:
+        <%=order.created_at%>
+        <br>
+
+        Order Status:
+        <%= order.status%>
+        <% order.order_items.each do |item|%>
+        <%= item.name%>
+        <br>
+        <% end %>

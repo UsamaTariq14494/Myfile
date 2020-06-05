@@ -1,6 +1,7 @@
-<div class="jumbotron">
-    <% @orders.each do |order| %>
-    <div class="text-left">
+<div class="row jumbotron">
+    <div class="col-md-6 text-left">
+
+        <% @orders.each do |order| %>
 
 
 
@@ -23,7 +24,7 @@
         <%= order.status%>
         <br>
         <button onclick = "click()" >abc</button>
-        <%= link_to "an article", order_path(order), remote: true %>
+        <%= link_to "an article", order_path(order), :remote => true %>
 
         <%if has_role? (:admin)%>
         <%= form_for(order) do |form| %>
@@ -39,19 +40,17 @@
         <%= button_to "Delete Order", order_path(order),method: :delete, :class => "btn btn-danger btn-sm"%>
         <%end%>
 
+
+
         <%end%>
 
     </div>
 
+    <div class="col-md-6" id="order">
+    </div> 
+
+    
+
 
 </div>
-
-<script>
-    var click = function (order_id) {
-
-console.log("in")
-    }
-console.log("out")
-
-</script>
 
